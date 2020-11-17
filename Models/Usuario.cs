@@ -9,7 +9,5 @@ namespace Notas.Models
         public string Mail { get; set; }
         [Required]
         public string Nombre { get; set; }
-
-        public List<Nota> Notas { get; set; }
     }
 }

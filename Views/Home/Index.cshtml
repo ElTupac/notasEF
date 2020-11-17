@@ -1,19 +1,20 @@
-﻿@model List<Nota>
-@{
+﻿@{
     ViewData["Title"] = "Home Page";
 }
 
+@{
+    bool badLogin = (ViewBag.badLogin != null);
+}
+
 <div class="text-center">
-    <h1 class="display-4">Mis notas</h1>
-    <p>Tengo @Model.Count notas</p>
-    <a id="consultarNotas" href="#">CONSULTAR NOTAS</a>
-    <div id="notas"></div>
-    @* @foreach (Nota nota in Model)
-    {
-        <div>
-            <h2>@nota.Titulo</h2>
-            <p>@nota.Cuerpo</p>
-        </div>   
-    }     *@
-    <img src="~/images/banner-home.jpg" />
+    <form action='@Url.Action("Login", "Home")' method="POST">
+        <label for="email">Ingresa tu mail</label>
+        <input type="email" name="email" placeholder="Email" required>
+        <label for="username">Ingresa tu usuario</label>
+        <input type="text" name="username" placeholder="Usuario" required>
+        @if(badLogin){
+            <p style="color: red; margin: 0;">El usuario no corresponde</p>
+        }
+        <button type="submit">Loguear</button>
+    </form>
 </div>

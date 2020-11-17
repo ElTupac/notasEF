@@ -11,6 +11,7 @@ namespace Notas.Models
         [Required]
         public string Titulo { get; set; }
         public string Cuerpo { get; set; }
-        public Usuario Creador { get; set; }
+
+        public string CreadorMail { get; set; }
     }
 }
