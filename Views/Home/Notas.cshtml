@@ -3,31 +3,46 @@
     ViewData["Title"] = "Mis notas";
 }
 
+@section NotaStyles {
+    <link rel="stylesheet" href="~/css/notaStyle.css" /> 
+}
+
 <h1>Mis notas</h1>
 @if(Model != null){
-    <p>Hay un total de @Model.Count() notas</p>
+    <p id="head">Hay un total de @Model.Count() notas</p>
 }
 
 @foreach (Nota nota in Model)
 {
-    <div>
-        <h2>@nota.Titulo</h2>
-        <p>@nota.Cuerpo</p>
+    <div class="notaa">
+            <div class="card  text-white bg-info mb-3" style="max-width: 18rem; min-height: 12rem; text-align: center;">
+            <div class="card-header">@nota.Titulo</div>
+            <div class="card-body bg-light">
+                <p class="card-text" style="color: #111;">@nota.Cuerpo</p>
+            </div>
+            </div> 
     </div>
 }
 
-<br>
 
-<form action='@Url.Action("CrearNota", "Home")' method="POST">
-    <label for="titulo">Titulo de la nota</label>
-    <input type="text" name="titulo" required>
-    <label for="texto">Texto de la nota</label>
-    <textarea name="texto"cols="30" rows="10"></textarea>
+<div class="agregarNota">
+    <form  action='@Url.Action("CrearNota", "Home")' method="POST">
+    <div class="card  text-white bg-info mb-3" style="max-width: 18rem; min-height: 12rem; text-align: center;">
+        <div class="card-header bg-info">
+            <input type="text" name="titulo" required>
+        </div>
+        <div class="card-body bg-light">
+            <textarea name="texto"cols="30" rows="3"></textarea>
+        </div>
+    </div>   
     <button type="submit">Agregar nota</button>
-</form>
+    </form>
+    <br>
+    <form action='@Url.Action("SacarUsuarioEnSesion", "Home")'>
+        <button type="submit">Salir</button>
+    </form>
+</div>
 
 <br>
 
-<form action='@Url.Action("SacarUsuarioEnSesion", "Home")'>
-    <button type="submit">Salir</button>
-</form>
+

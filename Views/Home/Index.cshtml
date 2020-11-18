@@ -6,15 +6,22 @@
     bool badLogin = (ViewBag.badLogin != null);
 }
 
-<div class="text-center">
-    <form action='@Url.Action("Login", "Home")' method="POST">
-        <label for="email">Ingresa tu mail</label>
-        <input type="email" name="email" placeholder="Email" required>
-        <label for="username">Ingresa tu usuario</label>
-        <input type="text" name="username" placeholder="Usuario" required>
-        @if(badLogin){
-            <p style="color: red; margin: 0;">El usuario no corresponde</p>
-        }
-        <button type="submit">Loguear</button>
-    </form>
+@section LoginStyles {
+    <link rel="stylesheet" href="~/css/loginStyle.css" /> 
+}
+
+<div class="wrapper">
+  <form class="login" action='@Url.Action("Login", "Home")' method="POST">
+    <p class="title">Ingesa tu cuenta</p>
+    <input type="email" name="email" placeholder="Email" autofocus required/>
+    <i class="fa fa-user"></i>
+    <input type="text" name="username" placeholder="Usuario" required/>
+    @if(badLogin){
+         <p style="color: red; margin: 0;">El usuario no corresponde</p>
+    }
+    <button>
+      <span class="state">Log in</span>
+    </button>
+  </form>
 </div>
+
